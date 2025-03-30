@@ -1,0 +1,293 @@
+[gd_scene load_steps=14 format=3 uid="uid://pvharl2pwbct"]
+
+[ext_resource type="Texture2D" uid="uid://dka22k4kgsg5a" path="res://source/images/background.png" id="1_t081b"]
+[ext_resource type="Script" uid="uid://bot5dwdp6npf1" path="res://source/scripts/split_container_orientation.gd" id="1_ywmtt"]
+[ext_resource type="Texture2D" uid="uid://dt7s7j7brg2k5" path="res://source/images/logo.png" id="2_rvs5q"]
+[ext_resource type="Shader" uid="uid://dcp4ydr0v4edl" path="res://source/shaders/monochrome.gdshader" id="2_t081b"]
+[ext_resource type="Texture2D" uid="uid://c4rgukoslqdbh" path="res://source/images/example.png" id="3_rvs5q"]
+[ext_resource type="Shader" uid="uid://dmdw3tvil5w85" path="res://source/shaders/grid_squircle.gdshader" id="4_7w8fr"]
+[ext_resource type="Theme" uid="uid://bf8ywe03vdlca" path="res://source/themes/button.tres" id="5_66n82"]
+[ext_resource type="Theme" uid="uid://dctp5i6004qra" path="res://source/themes/button_alt.tres" id="7_rvs5q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvs5q"]
+texture = ExtResource("1_t081b")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7w8fr"]
+size = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvs5q"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.101961, 0.109804, 0.172549, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_62vgf"]
+shader = ExtResource("2_t081b")
+shader_parameter/threshold = 0.5
+shader_parameter/color_on = Color(0.254902, 0.65098, 0.964706, 1)
+shader_parameter/color_off = Color(0.160784, 0.211765, 0.435294, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjm7x"]
+shader = ExtResource("4_7w8fr")
+shader_parameter/texture_width = 64
+shader_parameter/texture_height = 32
+shader_parameter/circle_radius = 0.8
+shader_parameter/circle_shape = 0.0
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rvs5q")
+
+[node name="SplitContainer" type="SplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_7w8fr")
+theme_override_icons/h_grabber = SubResource("PlaceholderTexture2D_7w8fr")
+theme_override_icons/v_grabber = SubResource("PlaceholderTexture2D_7w8fr")
+dragger_visibility = 1
+vertical = true
+drag_area_highlight_in_editor = true
+script = ExtResource("1_ywmtt")
+
+[node name="MarginContainer2" type="MarginContainer" parent="SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SplitContainer/MarginContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SplitContainer/MarginContainer2/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_rvs5q")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="SplitContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_rvs5q")
+
+[node name="AspectContainer" type="AspectRatioContainer" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+ratio = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/AspectContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_62vgf")
+layout_mode = 2
+texture = ExtResource("3_rvs5q")
+
+[node name="ColorRect" type="ColorRect" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/AspectContainer"]
+material = SubResource("ShaderMaterial_mjm7x")
+layout_mode = 2
+color = Color(0.101961, 0.109804, 0.172549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="SplitContainer/MarginContainer"]
+layout_mode = 2
+ratio = 1.2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SplitContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="SplitContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="1" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("5_66n82")
+text = "1"
+icon_alignment = 1
+
+[node name="2" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("5_66n82")
+text = "2"
+icon_alignment = 1
+
+[node name="3" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("5_66n82")
+text = "3"
+icon_alignment = 1
+
+[node name="C" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_rvs5q")
+text = "C"
+icon_alignment = 1
+
+[node name="4" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("5_66n82")
+text = "4"
+icon_alignment = 1
+
+[node name="5" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("5_66n82")
+text = "5"
+icon_alignment = 1
+
+[node name="6" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("5_66n82")
+text = "6"
+icon_alignment = 1
+
+[node name="D" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_rvs5q")
+text = "D"
+icon_alignment = 1
+
+[node name="7" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("5_66n82")
+text = "7"
+icon_alignment = 1
+
+[node name="8" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("5_66n82")
+text = "8"
+icon_alignment = 1
+
+[node name="9" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("5_66n82")
+text = "9"
+icon_alignment = 1
+
+[node name="E" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_rvs5q")
+text = "E"
+icon_alignment = 1
+
+[node name="A" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_rvs5q")
+text = "A"
+icon_alignment = 1
+
+[node name="0" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("5_66n82")
+text = "0"
+icon_alignment = 1
+
+[node name="B" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_rvs5q")
+text = "B"
+icon_alignment = 1
+
+[node name="F" type="Button" parent="SplitContainer/MarginContainer/VBoxContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_rvs5q")
+text = "F"
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SplitContainer/MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_rvs5q")
+expand_mode = 1
+stretch_mode = 3
+
+[connection signal="resized" from="SplitContainer" to="SplitContainer" method="_on_resized"]
