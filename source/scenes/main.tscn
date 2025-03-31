@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://pvharl2pwbct"]
+[gd_scene load_steps=17 format=3 uid="uid://pvharl2pwbct"]
 
 [ext_resource type="Texture2D" uid="uid://dka22k4kgsg5a" path="res://source/images/background.png" id="1_t081b"]
 [ext_resource type="Script" uid="uid://bot5dwdp6npf1" path="res://source/scripts/split_container_orientation.gd" id="1_ywmtt"]
-[ext_resource type="Texture2D" uid="uid://dt7s7j7brg2k5" path="res://source/images/logo.png" id="2_rvs5q"]
 [ext_resource type="Shader" uid="uid://dcp4ydr0v4edl" path="res://source/shaders/monochrome.gdshader" id="2_t081b"]
+[ext_resource type="Texture2D" uid="uid://tm2na37fodxm" path="res://source/images/logo_label.png" id="3_66n82"]
 [ext_resource type="Texture2D" uid="uid://c4rgukoslqdbh" path="res://source/images/example.png" id="3_rvs5q"]
 [ext_resource type="Shader" uid="uid://dmdw3tvil5w85" path="res://source/shaders/grid_squircle.gdshader" id="4_7w8fr"]
 [ext_resource type="Theme" uid="uid://bf8ywe03vdlca" path="res://source/themes/button.tres" id="5_66n82"]
 [ext_resource type="Theme" uid="uid://dctp5i6004qra" path="res://source/themes/button_alt.tres" id="7_rvs5q"]
+[ext_resource type="Texture2D" uid="uid://c1ur7h3bw7iih" path="res://source/images/beeper.png" id="9_66n82"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvs5q"]
 texture = ExtResource("1_t081b")
@@ -38,6 +39,14 @@ shader_parameter/texture_width = 64
 shader_parameter/texture_height = 32
 shader_parameter/circle_radius = 0.8
 shader_parameter/circle_shape = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kujm"]
+atlas = ExtResource("9_66n82")
+region = Rect2(0, 0, 56, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66n82"]
+atlas = ExtResource("9_66n82")
+region = Rect2(0, 16, 56, 16)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -91,7 +100,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("2_rvs5q")
+texture = ExtResource("3_66n82")
 expand_mode = 1
 stretch_mode = 3
 
@@ -281,13 +290,14 @@ theme = ExtResource("7_rvs5q")
 text = "F"
 icon_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SplitContainer/MarginContainer/VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="SplitContainer/MarginContainer/VBoxContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("2_rvs5q")
-expand_mode = 1
-stretch_mode = 3
+focus_mode = 0
+toggle_mode = true
+button_mask = 0
+texture_normal = SubResource("AtlasTexture_4kujm")
+texture_pressed = SubResource("AtlasTexture_66n82")
+stretch_mode = 5
 
 [connection signal="resized" from="SplitContainer" to="SplitContainer" method="_on_resized"]
