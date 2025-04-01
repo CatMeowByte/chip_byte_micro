@@ -4,7 +4,7 @@
 
 CHIP-8 Interpreter and Virtual Machine.
 
-### Work in Progress
++ Work in Progress
 
 ## License
 

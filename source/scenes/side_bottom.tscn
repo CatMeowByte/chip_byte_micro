@@ -1,0 +1,294 @@
+[gd_scene load_steps=39 format=3 uid="uid://cxmblbsshg6xa"]
+
+[ext_resource type="Texture2D" uid="uid://da2ijvryqlles" path="res://source/images/buttons.png" id="1_xnm1s"]
+[ext_resource type="Texture2D" uid="uid://c1ur7h3bw7iih" path="res://source/images/beeper.png" id="2_ggqpb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tw2t"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 12, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mji4n"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 12, 15, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnm1s"]
+size = Vector2(17, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1reyi"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 24, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbcf8"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 24, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puhf4"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 36, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt0t5"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 36, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnm1s"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 48, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmyat"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 48, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgb7w"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 60, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03nvp"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 60, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fah37"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 72, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0lua"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 72, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5c2y"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 84, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40jeh"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 84, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2np1y"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 96, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o3ci"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 96, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c05fo"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 108, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agp0r"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 108, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ecie"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 120, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5llpo"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 120, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r17k"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 132, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87mks"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 132, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8r6f"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 144, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyakj"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 144, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xonk1"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 156, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udlfh"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 156, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vp61"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 168, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ulmu"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 168, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u542"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 180, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvheh"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 180, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggqpb"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(0, 0, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qcbo"]
+atlas = ExtResource("1_xnm1s")
+region = Rect2(15, 0, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0a74"]
+atlas = ExtResource("2_ggqpb")
+region = Rect2(0, 0, 56, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex5aw"]
+atlas = ExtResource("2_ggqpb")
+region = Rect2(0, 16, 56, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t81sr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0a74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex5aw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="Bottom" type="Node2D"]
+texture_filter = 1
+
+[node name="ButtonPad" type="Node2D" parent="."]
+
+[node name="1" type="TouchScreenButton" parent="ButtonPad"]
+texture_normal = SubResource("AtlasTexture_1tw2t")
+texture_pressed = SubResource("AtlasTexture_mji4n")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="2" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(17, 0)
+texture_normal = SubResource("AtlasTexture_1reyi")
+texture_pressed = SubResource("AtlasTexture_tbcf8")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="3" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(34, 0)
+texture_normal = SubResource("AtlasTexture_puhf4")
+texture_pressed = SubResource("AtlasTexture_dt0t5")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="4" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(0, 13)
+texture_normal = SubResource("AtlasTexture_xnm1s")
+texture_pressed = SubResource("AtlasTexture_cmyat")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="5" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(17, 13)
+texture_normal = SubResource("AtlasTexture_xgb7w")
+texture_pressed = SubResource("AtlasTexture_03nvp")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="6" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(34, 13)
+texture_normal = SubResource("AtlasTexture_fah37")
+texture_pressed = SubResource("AtlasTexture_a0lua")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="7" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(0, 26)
+texture_normal = SubResource("AtlasTexture_c5c2y")
+texture_pressed = SubResource("AtlasTexture_40jeh")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="8" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(17, 26)
+texture_normal = SubResource("AtlasTexture_2np1y")
+texture_pressed = SubResource("AtlasTexture_7o3ci")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="9" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(34, 26)
+texture_normal = SubResource("AtlasTexture_c05fo")
+texture_pressed = SubResource("AtlasTexture_agp0r")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="A" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(0, 39)
+texture_normal = SubResource("AtlasTexture_4ecie")
+texture_pressed = SubResource("AtlasTexture_5llpo")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="B" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(34, 39)
+texture_normal = SubResource("AtlasTexture_2r17k")
+texture_pressed = SubResource("AtlasTexture_87mks")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="C" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(51, 0)
+texture_normal = SubResource("AtlasTexture_o8r6f")
+texture_pressed = SubResource("AtlasTexture_nyakj")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="D" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(51, 13)
+texture_normal = SubResource("AtlasTexture_xonk1")
+texture_pressed = SubResource("AtlasTexture_udlfh")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="E" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(51, 26)
+texture_normal = SubResource("AtlasTexture_7vp61")
+texture_pressed = SubResource("AtlasTexture_7ulmu")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="F" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(51, 39)
+texture_normal = SubResource("AtlasTexture_2u542")
+texture_pressed = SubResource("AtlasTexture_qvheh")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="0" type="TouchScreenButton" parent="ButtonPad"]
+position = Vector2(17, 39)
+texture_normal = SubResource("AtlasTexture_ggqpb")
+texture_pressed = SubResource("AtlasTexture_7qcbo")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+passby_press = true
+
+[node name="Beeper" type="AnimatedSprite2D" parent="."]
+position = Vector2(33, 64)
+sprite_frames = SubResource("SpriteFrames_t81sr")
+speed_scale = 0.0
