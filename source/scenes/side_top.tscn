@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://ssryli5jpdkl"]
+
+[ext_resource type="Texture2D" uid="uid://dc3i4m5qberdg" path="res://source/images/background_side_top.png" id="1_emef4"]
+[ext_resource type="Shader" uid="uid://dmdw3tvil5w85" path="res://source/shaders/dot_matrix_display.gdshader" id="2_rp4ql"]
+[ext_resource type="Texture2D" uid="uid://dvnqx6o83cjmf" path="res://source/images/blank.png" id="3_emef4"]
+[ext_resource type="Script" uid="uid://bfjhweaffp06x" path="res://source/scripts/video.gd" id="4_iisak"]
+[ext_resource type="Texture2D" uid="uid://bc6llkpywxmor" path="res://source/images/logo_half.png" id="5_cn8w6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7w8fr"]
+texture = ExtResource("1_emef4")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7iyis"]
+shader = ExtResource("2_rp4ql")
+shader_parameter/texture_width = 64
+shader_parameter/texture_height = 32
+shader_parameter/circle_radius = 0.75
+shader_parameter/circle_shape = 0.0
+shader_parameter/color_on = Color(0.992172, 0.796277, 0.45481, 1)
+shader_parameter/color_off = Color(0.360525, 0.145083, 0.360525, 1)
+shader_parameter/color_strength = 2.0
+
+[node name="PanelContainer" type="PanelContainer"]
+texture_filter = 1
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_7w8fr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="AspectContainer" type="AspectRatioContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+ratio = 2.0
+
+[node name="Display" type="TextureRect" parent="VBoxContainer/AspectContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_7iyis")
+layout_mode = 2
+texture = ExtResource("3_emef4")
+script = ExtResource("4_iisak")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+modulate = Color(0.265, 0.2885, 0.5, 1)
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+texture = ExtResource("5_cn8w6")
+expand_mode = 1
+stretch_mode = 3

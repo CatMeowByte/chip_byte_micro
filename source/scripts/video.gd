@@ -18,10 +18,10 @@ func _process(_delta: float) -> void:
 	var l8: PackedByteArray = _dat.duplicate()
 	var fade: int = 255 / fade_duration
 	for i: int in l8.size():
-		var val: float = _img.get_data()[i] - fade
+		var val: int = _img.get_data()[i] - fade
 		val = max(val, 0)
 
-		l8[i] = 255 if l8[i] else int(val)
+		l8[i] = 255 if l8[i] else val
 
 	_img.set_data(width, height, false, Image.FORMAT_L8, l8)
 	_tex.update(_img)

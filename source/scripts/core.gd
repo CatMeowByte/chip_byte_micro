@@ -1,6 +1,6 @@
 extends Node
 
-@onready var Display: TextureRect = %Display
+@onready var Display: TextureRect = %Top/%Display
 
 var memory: PackedByteArray # 4096 byte
 var buffer: PackedByteArray # 2048 bit / 8 = 256 byte

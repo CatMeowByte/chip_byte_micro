@@ -1,13 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://pvharl2pwbct"]
+[gd_scene load_steps=9 format=3 uid="uid://pvharl2pwbct"]
 
 [ext_resource type="Script" uid="uid://bun5owrp8n5nm" path="res://source/scripts/core.gd" id="1_7iyis"]
-[ext_resource type="Texture2D" uid="uid://dka22k4kgsg5a" path="res://source/images/background.png" id="1_t081b"]
+[ext_resource type="Texture2D" uid="uid://dka22k4kgsg5a" path="res://source/images/background_cover.png" id="1_t081b"]
 [ext_resource type="Script" uid="uid://bot5dwdp6npf1" path="res://source/scripts/gui/split_container_orientation.gd" id="1_ywmtt"]
-[ext_resource type="Texture2D" uid="uid://c4rgukoslqdbh" path="res://source/images/example.png" id="3_rvs5q"]
-[ext_resource type="Shader" uid="uid://dmdw3tvil5w85" path="res://source/shaders/dot_matrix_display.gdshader" id="4_7w8fr"]
-[ext_resource type="Texture2D" uid="uid://bc6llkpywxmor" path="res://source/images/logo_half.png" id="7_7w8fr"]
+[ext_resource type="PackedScene" uid="uid://ssryli5jpdkl" path="res://source/scenes/side_top.tscn" id="4_ywmtt"]
 [ext_resource type="PackedScene" uid="uid://cxmblbsshg6xa" path="res://source/scenes/side_bottom.tscn" id="7_rvs5q"]
-[ext_resource type="Script" uid="uid://bfjhweaffp06x" path="res://source/scripts/video.gd" id="9_7iyis"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvs5q"]
 texture = ExtResource("1_t081b")
@@ -18,23 +15,6 @@ texture_margin_bottom = 12.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7w8fr"]
 size = Vector2(0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvs5q"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.101961, 0.109804, 0.172549, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7iyis"]
-shader = ExtResource("4_7w8fr")
-shader_parameter/texture_width = 64
-shader_parameter/texture_height = 32
-shader_parameter/circle_radius = 0.75
-shader_parameter/circle_shape = 0.0
-shader_parameter/color_on = Color(0.992172, 0.796277, 0.45481, 1)
-shader_parameter/color_off = Color(0.360525, 0.145083, 0.360525, 1)
-shader_parameter/color_strength = 2.0
 
 [sub_resource type="Environment" id="Environment_7iyis"]
 background_mode = 3
@@ -60,7 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_rvs5q")
 
-[node name="SplitContainer" type="SplitContainer" parent="."]
+[node name="Split" type="SplitContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,65 +56,31 @@ vertical = true
 drag_area_highlight_in_editor = true
 script = ExtResource("1_ywmtt")
 
-[node name="MarginContainer2" type="MarginContainer" parent="SplitContainer"]
+[node name="MarginTop" type="MarginContainer" parent="Split"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SplitContainer/MarginContainer2"]
-layout_mode = 2
-alignment = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="SplitContainer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_rvs5q")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="AspectContainer" type="AspectRatioContainer" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-ratio = 2.0
-
-[node name="Display" type="TextureRect" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer/AspectContainer"]
+[node name="Top" parent="Split/MarginTop" instance=ExtResource("4_ywmtt")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_7iyis")
 layout_mode = 2
-texture = ExtResource("3_rvs5q")
-script = ExtResource("9_7iyis")
 
-[node name="TextureRect" type="TextureRect" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer"]
-modulate = Color(0.318, 0.3462, 0.6, 1)
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-texture = ExtResource("7_7w8fr")
-expand_mode = 1
-stretch_mode = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="SplitContainer"]
+[node name="MarginBottom" type="MarginContainer" parent="Split"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Control" type="Control" parent="SplitContainer/MarginContainer"]
-custom_minimum_size = Vector2(66, 72)
+[node name="Bottom" parent="Split/MarginBottom" instance=ExtResource("7_rvs5q")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="Bottom" parent="SplitContainer/MarginContainer/Control" instance=ExtResource("7_rvs5q")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="World" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7iyis")
 
-[connection signal="resized" from="SplitContainer" to="SplitContainer" method="_on_resized"]
+[connection signal="resized" from="Split" to="Split" method="_on_resized"]

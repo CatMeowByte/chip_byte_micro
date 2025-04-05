@@ -1,8 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://cxmblbsshg6xa"]
+[gd_scene load_steps=44 format=3 uid="uid://cxmblbsshg6xa"]
 
+[ext_resource type="Texture2D" uid="uid://2enra46e51ik" path="res://source/images/background_side_bottom.png" id="1_mji4n"]
 [ext_resource type="Texture2D" uid="uid://da2ijvryqlles" path="res://source/images/buttons.png" id="1_xnm1s"]
 [ext_resource type="Script" uid="uid://c1ynbrqisklim" path="res://source/scripts/gui/touchscreen_button_action.gd" id="2_7qcbo"]
 [ext_resource type="Texture2D" uid="uid://c1ur7h3bw7iih" path="res://source/images/beeper.png" id="2_ggqpb"]
+[ext_resource type="Texture2D" uid="uid://cnorsxpipqccv" path="res://source/images/button_reset.png" id="3_1tw2t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1tw2t"]
 atlas = ExtResource("1_xnm1s")
@@ -13,7 +15,7 @@ atlas = ExtResource("1_xnm1s")
 region = Rect2(15, 12, 15, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnm1s"]
-size = Vector2(17, 13)
+size = Vector2(14, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1reyi"]
 atlas = ExtResource("1_xnm1s")
@@ -135,13 +137,21 @@ region = Rect2(0, 0, 15, 12)
 atlas = ExtResource("1_xnm1s")
 region = Rect2(15, 0, 15, 12)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t81sr"]
+atlas = ExtResource("3_1tw2t")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rpru"]
+atlas = ExtResource("3_1tw2t")
+region = Rect2(10, 0, 10, 10)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0a74"]
 atlas = ExtResource("2_ggqpb")
-region = Rect2(0, 0, 56, 16)
+region = Rect2(0, 0, 60, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ex5aw"]
 atlas = ExtResource("2_ggqpb")
-region = Rect2(0, 16, 56, 16)
+region = Rect2(0, 16, 60, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t81sr"]
 animations = [{
@@ -157,12 +167,30 @@ animations = [{
 "speed": 0.0
 }]
 
-[node name="Bottom" type="Node2D"]
+[node name="Bottom" type="Control"]
 texture_filter = 1
+custom_minimum_size = Vector2(72, 75)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="ButtonPad" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="1" type="TouchScreenButton" parent="ButtonPad"]
+[node name="Background" type="NinePatchRect" parent="Node2D"]
+offset_right = 72.0
+offset_bottom = 57.0
+texture = ExtResource("1_mji4n")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonPad" type="Node2D" parent="Node2D"]
+position = Vector2(3, 2)
+
+[node name="1" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 texture_normal = SubResource("AtlasTexture_1tw2t")
 texture_pressed = SubResource("AtlasTexture_mji4n")
 shape = SubResource("RectangleShape2D_xnm1s")
@@ -171,7 +199,7 @@ passby_press = true
 action = "1"
 script = ExtResource("2_7qcbo")
 
-[node name="2" type="TouchScreenButton" parent="ButtonPad"]
+[node name="2" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(17, 0)
 texture_normal = SubResource("AtlasTexture_1reyi")
 texture_pressed = SubResource("AtlasTexture_tbcf8")
@@ -181,7 +209,7 @@ passby_press = true
 action = "2"
 script = ExtResource("2_7qcbo")
 
-[node name="3" type="TouchScreenButton" parent="ButtonPad"]
+[node name="3" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(34, 0)
 texture_normal = SubResource("AtlasTexture_puhf4")
 texture_pressed = SubResource("AtlasTexture_dt0t5")
@@ -191,7 +219,7 @@ passby_press = true
 action = "3"
 script = ExtResource("2_7qcbo")
 
-[node name="4" type="TouchScreenButton" parent="ButtonPad"]
+[node name="4" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(0, 13)
 texture_normal = SubResource("AtlasTexture_xnm1s")
 texture_pressed = SubResource("AtlasTexture_cmyat")
@@ -201,7 +229,7 @@ passby_press = true
 action = "4"
 script = ExtResource("2_7qcbo")
 
-[node name="5" type="TouchScreenButton" parent="ButtonPad"]
+[node name="5" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(17, 13)
 texture_normal = SubResource("AtlasTexture_xgb7w")
 texture_pressed = SubResource("AtlasTexture_03nvp")
@@ -211,7 +239,7 @@ passby_press = true
 action = "5"
 script = ExtResource("2_7qcbo")
 
-[node name="6" type="TouchScreenButton" parent="ButtonPad"]
+[node name="6" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(34, 13)
 texture_normal = SubResource("AtlasTexture_fah37")
 texture_pressed = SubResource("AtlasTexture_a0lua")
@@ -221,7 +249,7 @@ passby_press = true
 action = "6"
 script = ExtResource("2_7qcbo")
 
-[node name="7" type="TouchScreenButton" parent="ButtonPad"]
+[node name="7" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(0, 26)
 texture_normal = SubResource("AtlasTexture_c5c2y")
 texture_pressed = SubResource("AtlasTexture_40jeh")
@@ -231,7 +259,7 @@ passby_press = true
 action = "7"
 script = ExtResource("2_7qcbo")
 
-[node name="8" type="TouchScreenButton" parent="ButtonPad"]
+[node name="8" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(17, 26)
 texture_normal = SubResource("AtlasTexture_2np1y")
 texture_pressed = SubResource("AtlasTexture_7o3ci")
@@ -241,7 +269,7 @@ passby_press = true
 action = "8"
 script = ExtResource("2_7qcbo")
 
-[node name="9" type="TouchScreenButton" parent="ButtonPad"]
+[node name="9" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(34, 26)
 texture_normal = SubResource("AtlasTexture_c05fo")
 texture_pressed = SubResource("AtlasTexture_agp0r")
@@ -251,7 +279,7 @@ passby_press = true
 action = "9"
 script = ExtResource("2_7qcbo")
 
-[node name="A" type="TouchScreenButton" parent="ButtonPad"]
+[node name="A" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(0, 39)
 texture_normal = SubResource("AtlasTexture_4ecie")
 texture_pressed = SubResource("AtlasTexture_5llpo")
@@ -261,7 +289,7 @@ passby_press = true
 action = "A"
 script = ExtResource("2_7qcbo")
 
-[node name="B" type="TouchScreenButton" parent="ButtonPad"]
+[node name="B" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(34, 39)
 texture_normal = SubResource("AtlasTexture_2r17k")
 texture_pressed = SubResource("AtlasTexture_87mks")
@@ -271,7 +299,7 @@ passby_press = true
 action = "B"
 script = ExtResource("2_7qcbo")
 
-[node name="C" type="TouchScreenButton" parent="ButtonPad"]
+[node name="C" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(51, 0)
 texture_normal = SubResource("AtlasTexture_o8r6f")
 texture_pressed = SubResource("AtlasTexture_nyakj")
@@ -281,7 +309,7 @@ passby_press = true
 action = "C"
 script = ExtResource("2_7qcbo")
 
-[node name="D" type="TouchScreenButton" parent="ButtonPad"]
+[node name="D" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(51, 13)
 texture_normal = SubResource("AtlasTexture_xonk1")
 texture_pressed = SubResource("AtlasTexture_udlfh")
@@ -291,7 +319,7 @@ passby_press = true
 action = "D"
 script = ExtResource("2_7qcbo")
 
-[node name="E" type="TouchScreenButton" parent="ButtonPad"]
+[node name="E" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(51, 26)
 texture_normal = SubResource("AtlasTexture_7vp61")
 texture_pressed = SubResource("AtlasTexture_7ulmu")
@@ -301,7 +329,7 @@ passby_press = true
 action = "E"
 script = ExtResource("2_7qcbo")
 
-[node name="F" type="TouchScreenButton" parent="ButtonPad"]
+[node name="F" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(51, 39)
 texture_normal = SubResource("AtlasTexture_2u542")
 texture_pressed = SubResource("AtlasTexture_qvheh")
@@ -311,7 +339,7 @@ passby_press = true
 action = "F"
 script = ExtResource("2_7qcbo")
 
-[node name="0" type="TouchScreenButton" parent="ButtonPad"]
+[node name="0" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(17, 39)
 texture_normal = SubResource("AtlasTexture_ggqpb")
 texture_pressed = SubResource("AtlasTexture_7qcbo")
@@ -321,7 +349,16 @@ passby_press = true
 action = "0"
 script = ExtResource("2_7qcbo")
 
-[node name="Beeper" type="AnimatedSprite2D" parent="."]
-position = Vector2(33, 64)
+[node name="Reset" type="TouchScreenButton" parent="Node2D"]
+position = Vector2(2, 64)
+texture_normal = SubResource("AtlasTexture_t81sr")
+texture_pressed = SubResource("AtlasTexture_3rpru")
+shape = SubResource("RectangleShape2D_xnm1s")
+shape_visible = false
+action = "Reset"
+script = ExtResource("2_7qcbo")
+
+[node name="Beeper" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(44, 69)
 sprite_frames = SubResource("SpriteFrames_t81sr")
 speed_scale = 0.0
