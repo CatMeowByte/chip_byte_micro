@@ -1,14 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://pvharl2pwbct"]
+[gd_scene load_steps=14 format=3 uid="uid://pvharl2pwbct"]
 
+[ext_resource type="Script" uid="uid://bun5owrp8n5nm" path="res://source/scripts/core.gd" id="1_7iyis"]
 [ext_resource type="Texture2D" uid="uid://dka22k4kgsg5a" path="res://source/images/background.png" id="1_t081b"]
-[ext_resource type="Script" uid="uid://bot5dwdp6npf1" path="res://source/scripts/split_container_orientation.gd" id="1_ywmtt"]
-[ext_resource type="Shader" uid="uid://dcp4ydr0v4edl" path="res://source/shaders/monochrome.gdshader" id="2_t081b"]
-[ext_resource type="Texture2D" uid="uid://tm2na37fodxm" path="res://source/images/logo_label.png" id="3_66n82"]
+[ext_resource type="Script" uid="uid://bot5dwdp6npf1" path="res://source/scripts/gui/split_container_orientation.gd" id="1_ywmtt"]
 [ext_resource type="Texture2D" uid="uid://c4rgukoslqdbh" path="res://source/images/example.png" id="3_rvs5q"]
-[ext_resource type="Shader" uid="uid://dmdw3tvil5w85" path="res://source/shaders/grid_squircle.gdshader" id="4_7w8fr"]
-[ext_resource type="Shader" uid="uid://wx652ijxqu7p" path="res://source/shaders/animated_spritesheet.gdshader" id="4_rvs5q"]
-[ext_resource type="Texture2D" uid="uid://dyfeo2x2p2nqs" path="res://source/images/example_animated.png" id="5_7w8fr"]
+[ext_resource type="Shader" uid="uid://dmdw3tvil5w85" path="res://source/shaders/dot_matrix_display.gdshader" id="4_7w8fr"]
+[ext_resource type="Texture2D" uid="uid://bc6llkpywxmor" path="res://source/images/logo_half.png" id="7_7w8fr"]
 [ext_resource type="PackedScene" uid="uid://cxmblbsshg6xa" path="res://source/scenes/side_bottom.tscn" id="7_rvs5q"]
+[ext_resource type="Script" uid="uid://bfjhweaffp06x" path="res://source/scripts/video.gd" id="9_7iyis"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvs5q"]
 texture = ExtResource("1_t081b")
@@ -27,35 +26,32 @@ content_margin_right = 8.0
 content_margin_bottom = 8.0
 bg_color = Color(0.101961, 0.109804, 0.172549, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_66n82"]
-shader = ExtResource("2_t081b")
-shader_parameter/threshold = 0.5
-shader_parameter/color_on = Color(0.45098, 0.937255, 0.968627, 1)
-shader_parameter/color_off = Color(0.160784, 0.211765, 0.435294, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kujm"]
-shader = ExtResource("4_rvs5q")
-shader_parameter/frame_columns = 7
-shader_parameter/frame_rows = 6
-shader_parameter/fps = 8.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjm7x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7iyis"]
 shader = ExtResource("4_7w8fr")
 shader_parameter/texture_width = 64
 shader_parameter/texture_height = 32
-shader_parameter/circle_radius = 0.65
+shader_parameter/circle_radius = 0.75
 shader_parameter/circle_shape = 0.0
+shader_parameter/color_on = Color(0.992172, 0.796277, 0.45481, 1)
+shader_parameter/color_off = Color(0.360525, 0.145083, 0.360525, 1)
+shader_parameter/color_strength = 2.0
+
+[sub_resource type="Environment" id="Environment_7iyis"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
 
 [node name="Main" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7iyis")
 
 [node name="Panel" type="Panel" parent="."]
-texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,42 +89,35 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SplitContainer/MarginContainer2/VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("3_66n82")
-expand_mode = 1
-stretch_mode = 3
-
 [node name="PanelContainer" type="PanelContainer" parent="SplitContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_rvs5q")
 
-[node name="AspectContainer" type="AspectRatioContainer" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="AspectContainer" type="AspectRatioContainer" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 ratio = 2.0
 
-[node name="TextureRect2" type="TextureRect" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/AspectContainer"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_66n82")
+[node name="Display" type="TextureRect" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer/AspectContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_7iyis")
 layout_mode = 2
 texture = ExtResource("3_rvs5q")
+script = ExtResource("9_7iyis")
 
-[node name="TextureRect" type="TextureRect" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/AspectContainer"]
-visible = false
-texture_filter = 1
-material = SubResource("ShaderMaterial_4kujm")
+[node name="TextureRect" type="TextureRect" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer"]
+modulate = Color(0.318, 0.3462, 0.6, 1)
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-texture = ExtResource("5_7w8fr")
+texture = ExtResource("7_7w8fr")
 expand_mode = 1
-
-[node name="Grill" type="ColorRect" parent="SplitContainer/MarginContainer2/VBoxContainer/PanelContainer/AspectContainer"]
-material = SubResource("ShaderMaterial_mjm7x")
-layout_mode = 2
-color = Color(0.101961, 0.109804, 0.172549, 1)
+stretch_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="SplitContainer"]
 layout_mode = 2
@@ -144,5 +133,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Bottom" parent="SplitContainer/MarginContainer/Control" instance=ExtResource("7_rvs5q")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7iyis")
 
 [connection signal="resized" from="SplitContainer" to="SplitContainer" method="_on_resized"]
