@@ -198,6 +198,7 @@ shape_visible = false
 passby_press = true
 action = "1"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="2" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(17, 0)
@@ -208,6 +209,7 @@ shape_visible = false
 passby_press = true
 action = "2"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="3" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(34, 0)
@@ -218,6 +220,7 @@ shape_visible = false
 passby_press = true
 action = "3"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="4" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(0, 13)
@@ -228,6 +231,7 @@ shape_visible = false
 passby_press = true
 action = "4"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="5" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(17, 13)
@@ -238,6 +242,7 @@ shape_visible = false
 passby_press = true
 action = "5"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="6" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(34, 13)
@@ -248,6 +253,7 @@ shape_visible = false
 passby_press = true
 action = "6"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="7" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(0, 26)
@@ -258,6 +264,7 @@ shape_visible = false
 passby_press = true
 action = "7"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="8" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(17, 26)
@@ -268,6 +275,7 @@ shape_visible = false
 passby_press = true
 action = "8"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="9" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(34, 26)
@@ -278,6 +286,7 @@ shape_visible = false
 passby_press = true
 action = "9"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="A" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(0, 39)
@@ -288,6 +297,7 @@ shape_visible = false
 passby_press = true
 action = "A"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="B" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(34, 39)
@@ -298,6 +308,7 @@ shape_visible = false
 passby_press = true
 action = "B"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="C" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(51, 0)
@@ -308,6 +319,7 @@ shape_visible = false
 passby_press = true
 action = "C"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="D" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(51, 13)
@@ -318,6 +330,7 @@ shape_visible = false
 passby_press = true
 action = "D"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="E" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(51, 26)
@@ -328,6 +341,7 @@ shape_visible = false
 passby_press = true
 action = "E"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="F" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(51, 39)
@@ -338,6 +352,7 @@ shape_visible = false
 passby_press = true
 action = "F"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="0" type="TouchScreenButton" parent="Node2D/ButtonPad"]
 position = Vector2(17, 39)
@@ -348,6 +363,7 @@ shape_visible = false
 passby_press = true
 action = "0"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="Reset" type="TouchScreenButton" parent="Node2D"]
 position = Vector2(2, 64)
@@ -357,6 +373,7 @@ shape = SubResource("RectangleShape2D_xnm1s")
 shape_visible = false
 action = "Reset"
 script = ExtResource("2_7qcbo")
+metadata/_custom_type_script = "uid://c1ynbrqisklim"
 
 [node name="Beeper" type="AnimatedSprite2D" parent="Node2D"]
 position = Vector2(44, 69)

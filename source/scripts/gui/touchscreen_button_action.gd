@@ -1,4 +1,5 @@
 extends TouchScreenButton
+class_name TouchScreenButtonAction
 
 var _tex: Array[Texture2D]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://pvharl2pwbct"]
+[gd_scene load_steps=10 format=3 uid="uid://pvharl2pwbct"]
 
 [ext_resource type="Script" uid="uid://bun5owrp8n5nm" path="res://source/scripts/core.gd" id="1_7iyis"]
+[ext_resource type="Script" uid="uid://bqfr1pi2io0mh" path="res://source/scripts/main.gd" id="1_rvs5q"]
 [ext_resource type="Texture2D" uid="uid://dka22k4kgsg5a" path="res://source/images/background_cover.png" id="1_t081b"]
 [ext_resource type="Script" uid="uid://bot5dwdp6npf1" path="res://source/scripts/gui/split_container_orientation.gd" id="1_ywmtt"]
 [ext_resource type="PackedScene" uid="uid://ssryli5jpdkl" path="res://source/scenes/side_top.tscn" id="4_ywmtt"]
@@ -19,19 +20,22 @@ size = Vector2(0, 0)
 [sub_resource type="Environment" id="Environment_7iyis"]
 background_mode = 3
 glow_enabled = true
-glow_intensity = 1.0
+glow_intensity = 0.25
 
-[node name="Main" type="Control"]
-texture_filter = 1
+[node name="Main" type="Node" node_paths=PackedStringArray("Core", "Display")]
+script = ExtResource("1_rvs5q")
+Core = NodePath("Core")
+Display = NodePath("Interface/Split/MarginTop/Top/VBoxContainer/AspectContainer/Display")
+
+[node name="Interface" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7iyis")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="Interface"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_rvs5q")
 
-[node name="Split" type="SplitContainer" parent="."]
+[node name="Split" type="SplitContainer" parent="Interface"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,8 +59,9 @@ dragger_visibility = 1
 vertical = true
 drag_area_highlight_in_editor = true
 script = ExtResource("1_ywmtt")
+metadata/_custom_type_script = "uid://bot5dwdp6npf1"
 
-[node name="MarginTop" type="MarginContainer" parent="Split"]
+[node name="MarginTop" type="MarginContainer" parent="Interface/Split"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -65,22 +70,29 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="Top" parent="Split/MarginTop" instance=ExtResource("4_ywmtt")]
+[node name="Top" parent="Interface/Split/MarginTop" instance=ExtResource("4_ywmtt")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MarginBottom" type="MarginContainer" parent="Split"]
+[node name="MarginBottom" type="MarginContainer" parent="Interface/Split"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Bottom" parent="Split/MarginBottom" instance=ExtResource("7_rvs5q")]
+[node name="Bottom" parent="Interface/Split/MarginBottom" instance=ExtResource("7_rvs5q")]
 unique_name_in_owner = true
 layout_mode = 2
 
 [node name="World" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7iyis")
 
-[connection signal="resized" from="Split" to="Split" method="_on_resized"]
+[node name="Core" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_7iyis")
+metadata/_custom_type_script = "uid://bun5owrp8n5nm"
+
+[connection signal="resized" from="Interface/Split" to="Interface/Split" method="_on_resized"]
+
+[editable path="Interface/Split/MarginTop/Top"]

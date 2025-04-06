@@ -1,4 +1,5 @@
 extends TextureRect
+class_name TextureDisplay
 
 @export var width: int = 64
 @export var height: int = 32

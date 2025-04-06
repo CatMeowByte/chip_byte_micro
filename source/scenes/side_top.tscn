@@ -44,6 +44,7 @@ material = SubResource("ShaderMaterial_7iyis")
 layout_mode = 2
 texture = ExtResource("3_emef4")
 script = ExtResource("4_iisak")
+metadata/_custom_type_script = "uid://bfjhweaffp06x"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 modulate = Color(0.265, 0.2885, 0.5, 1)
