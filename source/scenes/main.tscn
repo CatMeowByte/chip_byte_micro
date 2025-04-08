@@ -20,7 +20,8 @@ size = Vector2(0, 0)
 [sub_resource type="Environment" id="Environment_7iyis"]
 background_mode = 3
 glow_enabled = true
-glow_intensity = 0.25
+glow_intensity = 0.5
+glow_hdr_scale = 0.0
 
 [node name="Main" type="Node" node_paths=PackedStringArray("Core", "Display")]
 script = ExtResource("1_rvs5q")
@@ -28,6 +29,7 @@ Core = NodePath("Core")
 Display = NodePath("Interface/Split/MarginTop/Top/VBoxContainer/AspectContainer/Display")
 
 [node name="Interface" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

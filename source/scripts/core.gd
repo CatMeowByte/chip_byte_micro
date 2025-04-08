@@ -49,7 +49,7 @@ func init() -> void:
 
 	delay = 0
 	sound = 0
-	counter = 0
+	counter = 0x0FFE
 	pointer = 0
 
 	# Load font
@@ -65,10 +65,12 @@ func cartridge_load(path: String) -> void:
 	init()
 
 	var cartridge: FileAccess = FileAccess.open(path, FileAccess.READ)
+	if not cartridge: return
+
 	pointer = 0x200
 	while not cartridge.eof_reached():
 		if pointer >= memory.size():
-			printerr("CARTRIDGE LOAD: MEMORY OVERFLOW")
+			printerr("CARTRIDGE LOAD MEMORY OVERFLOW")
 			break
 		memory[pointer] = cartridge.get_8()
 		pointer += 1
@@ -78,17 +80,29 @@ func cartridge_load(path: String) -> void:
 
 
 func execute() -> void:
+	if counter < 0 or counter + 1 >= memory.size():
+		printerr("COUNTER OUT OF BOUNDS: ", counter)
+		return
+
 	var opcode: int = memory[counter] << 8 | memory[counter + 1]
 	var is_increment: bool = true
+	var is_opcode: bool = true
+
 	match opcode & 0xF000:
 		# Core
 		0x0000:
 			match opcode & 0xFF:
+				0x00:
+					pass
+
 				# Clear
 				0xE0:
 					buffer.fill(0)
+
 				0xEE:
 					pass
+
+				_: is_opcode = false
 
 		# Jump Counter
 		0x1000:
@@ -137,5 +151,9 @@ func execute() -> void:
 				0x29:
 					pointer = 0x50 + (i * 5)
 
+				_: is_opcode = false
 
+		_: is_opcode = false
+
+	if not is_opcode: printerr("OPCODE INVALID: 0x%04X" % opcode)
 	if is_increment: counter = clampi(counter + 2, 0, 4096 - 2)  # 2 byte opcode size
