@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1743920821|19266004119';
+const CACHE_VERSION = '1744162256|44816909883';
 /** @type {string} */
 const CACHE_PREFIX = 'CHIP-Byte Micro-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;

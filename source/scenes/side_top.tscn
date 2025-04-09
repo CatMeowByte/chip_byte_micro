@@ -39,11 +39,11 @@ size_flags_vertical = 3
 ratio = 2.0
 
 [node name="Display" type="TextureRect" parent="VBoxContainer/AspectContainer"]
-unique_name_in_owner = true
 material = SubResource("ShaderMaterial_7iyis")
 layout_mode = 2
 texture = ExtResource("3_emef4")
 script = ExtResource("4_iisak")
+fade_modifier = 0.6
 metadata/_custom_type_script = "uid://bfjhweaffp06x"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]

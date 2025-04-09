@@ -4,7 +4,10 @@
 
 CHIP-8 Interpreter and Virtual Machine.
 
-+ Work in Progress
+## Usage
+
+Drop the `.ch8` cartridge file to the application.
+Currently only compatible with original CHIP-8 cartridge.
 
 ## License
 
