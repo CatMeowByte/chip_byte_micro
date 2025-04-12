@@ -197,6 +197,8 @@ func execute() -> void:
 					register[0xF] = (a >> 7) & 0x1
 					register[x] = (a << 1) & 0xFF
 
+				_: is_opcode = false
+
 		# Skip next if x not equal y
 		0x9000:
 			if opcode & 0xF == 0:
@@ -245,6 +247,8 @@ func execute() -> void:
 				# If not pressed
 				0xA1:
 					if not Input.is_action_pressed("%X" % register[x]): counter += 2
+
+				_: is_opcode = false
 
 		# System
 		0xF000:
@@ -308,5 +312,7 @@ func execute() -> void:
 	if is_increment: counter += 2 # 2 byte opcode size
 	counter = clampi(counter, 0, 4096 - 2)
 
+
+func state_update() -> void:
 	delay = maxi(0 , delay - 1)
 	sound = maxi(0 , sound - 1)

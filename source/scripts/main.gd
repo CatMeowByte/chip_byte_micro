@@ -10,8 +10,9 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	for i in range(1):
+	for i in range(128):
 		Core.execute()
+	Core.state_update()
 	Display.flip(Core.buffer)
 	Audio.tone_emit(float(Core.sound > 0) * 0.5, 523.25)
 

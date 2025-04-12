@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cxmblbsshg6xa"]
+[gd_scene load_steps=45 format=3 uid="uid://cxmblbsshg6xa"]
 
 [ext_resource type="Texture2D" uid="uid://2enra46e51ik" path="res://source/images/background_side_bottom.png" id="1_mji4n"]
 [ext_resource type="Texture2D" uid="uid://da2ijvryqlles" path="res://source/images/buttons.png" id="1_xnm1s"]
@@ -15,7 +15,7 @@ atlas = ExtResource("1_xnm1s")
 region = Rect2(15, 12, 15, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnm1s"]
-size = Vector2(14, 14)
+size = Vector2(16, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1reyi"]
 atlas = ExtResource("1_xnm1s")
@@ -144,6 +144,9 @@ region = Rect2(0, 0, 10, 10)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rpru"]
 atlas = ExtResource("3_1tw2t")
 region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mji4n"]
+size = Vector2(10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0a74"]
 atlas = ExtResource("2_ggqpb")
@@ -369,7 +372,7 @@ metadata/_custom_type_script = "uid://c1ynbrqisklim"
 position = Vector2(2, 64)
 texture_normal = SubResource("AtlasTexture_t81sr")
 texture_pressed = SubResource("AtlasTexture_3rpru")
-shape = SubResource("RectangleShape2D_xnm1s")
+shape = SubResource("RectangleShape2D_mji4n")
 shape_visible = false
 action = "Reset"
 script = ExtResource("2_7qcbo")
