@@ -3,6 +3,7 @@ extends Node
 @export var Core: CBMCore
 @export var Display: TextureDisplay
 @export var Audio: AudioStreamBeeper
+@export var BeeperSprite: AnimatedSprite2D
 
 func _ready():
 	get_window().files_dropped.connect(on_files_dropped)
@@ -10,11 +11,12 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	for i in range(128):
+	for i in range(256):
 		Core.execute()
 	Core.state_update()
 	Display.flip(Core.buffer)
 	Audio.tone_emit(float(Core.sound > 0) * 0.5, 523.25)
+	BeeperSprite.frame = int(Core.sound > 0)
 
 
 func _input(event: InputEvent) -> void:

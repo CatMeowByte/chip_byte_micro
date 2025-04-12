@@ -28,11 +28,12 @@ glow_hdr_scale = 0.0
 mix_rate = 5512.0
 buffer_length = 0.06
 
-[node name="Main" type="Node" node_paths=PackedStringArray("Core", "Display", "Audio")]
+[node name="Main" type="Node" node_paths=PackedStringArray("Core", "Display", "Audio", "BeeperSprite")]
 script = ExtResource("1_rvs5q")
 Core = NodePath("Core")
 Display = NodePath("Interface/Split/MarginTop/Top/VBoxContainer/AspectContainer/Display")
 Audio = NodePath("Audio")
+BeeperSprite = NodePath("Interface/Split/MarginBottom/Bottom/Node2D/Beeper")
 
 [node name="Interface" type="Control" parent="."]
 texture_filter = 1
@@ -106,3 +107,4 @@ metadata/_custom_type_script = "uid://gwalrltugaw5"
 [connection signal="resized" from="Interface/Split" to="Interface/Split" method="_on_resized"]
 
 [editable path="Interface/Split/MarginTop/Top"]
+[editable path="Interface/Split/MarginBottom/Bottom"]
