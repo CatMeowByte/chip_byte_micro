@@ -170,32 +170,32 @@ func execute() -> void:
 				# Add with carry
 				0x4:
 					var sum: int = a + b
-					register[0xF] = int(sum > 0xFF)
 					register[x] = sum & 0xFF
+					register[0xF] = int(sum > 0xFF)
 
 				# Subtract x - y with carry if x bigger than y
 				0x5:
-					register[0xF] = int(a > b)
 					register[x] = (a - b) & 0xFF
+					register[0xF] = int(a >= b)
 
 				# Bit shift right carry LSB
 				0x6:
 					if false: # Legacy
 						register[x] = b
-					register[0xF] = a & 0x1
 					register[x] = a >> 1
+					register[0xF] = a & 0x1
 
 				# Subtract y - x with carry if y bigger than x
 				0x7:
-					register[0xF] = int(b > a)
 					register[x] = (b - a) & 0xFF
+					register[0xF] = int(b >= a)
 
 				# Bit shift left carry MSB
 				0xE:
 					if false: # Legacy
 						register[x] = b
-					register[0xF] = (a >> 7) & 0x1
 					register[x] = (a << 1) & 0xFF
+					register[0xF] = (a >> 7) & 0x1
 
 				_: is_opcode = false
 
