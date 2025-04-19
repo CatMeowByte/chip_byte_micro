@@ -1,10 +1,6 @@
 extends Node
 class_name CBMCore
 
-const VIDEO: Dictionary[String, int] = {
-	WIDTH = 64,
-	HEIGHT = 32,
-}
 const FONT: Array[int] = [
 	0xE0, 0xA0, 0xA0, 0xA0, 0xE0, # 0
 	0xC0, 0x40, 0x40, 0x40, 0xE0, # 1
@@ -24,6 +20,16 @@ const FONT: Array[int] = [
 	0xE0, 0x80, 0xE0, 0x80, 0x80  # F
 ]
 
+var video: Dictionary[String, int] = {
+	width = 64,
+	height = 32,
+}
+var flags: Dictionary[String, bool] = {
+	is_halting = false,
+	is_awaiting_key = false,
+	is_hires = false,
+}
+
 var memory: PackedByteArray # 4096 byte
 var buffer: PackedByteArray # should be 256 byte but 2048 for convenience
 var register: PackedByteArray # 16 byte
@@ -37,8 +43,10 @@ var pointer: int = 0 # 2 byte
 
 
 func init() -> void:
+	set_hires(false)
+
 	memory.resize(4096)
-	buffer.resize(VIDEO.WIDTH * VIDEO.HEIGHT)
+	buffer.resize(128 * 64)
 	register.resize(16)
 	stack.resize(16)
 
@@ -91,24 +99,25 @@ func execute() -> void:
 	var y: int = (opcode & 0x00F0) >> 4
 	var z: int = (opcode & 0x000F)
 
-	match opcode & 0xF000:
-		0x0000: result = Opcode0.execute(self, opcode)
-		0x1000: result = Opcode1.execute(self, opcode)
-		0x2000: result = Opcode2.execute(self, opcode)
-		0x3000: result = Opcode3.execute(self, opcode)
-		0x4000: result = Opcode4.execute(self, opcode)
-		0x5000: result = Opcode5.execute(self, opcode)
-		0x6000: result = Opcode6.execute(self, opcode)
-		0x7000: result = Opcode7.execute(self, opcode)
-		0x8000: result = Opcode8.execute(self, opcode)
-		0x9000: result = Opcode9.execute(self, opcode)
-		0xA000: result = OpcodeA.execute(self, opcode)
-		0xB000: result = OpcodeB.execute(self, opcode)
-		0xC000: result = OpcodeC.execute(self, opcode)
-		0xD000: result = OpcodeD.execute(self, opcode)
-		0xE000: result = OpcodeE.execute(self, opcode)
-		0xF000: result = OpcodeF.execute(self, opcode)
-		_: result.valid = false
+	if opcode: # For 0x0000 NOP
+		match opcode & 0xF000:
+			0x0000: result = Opcode0.execute(self, opcode)
+			0x1000: result = Opcode1.execute(self, opcode)
+			0x2000: result = Opcode2.execute(self, opcode)
+			0x3000: result = Opcode3.execute(self, opcode)
+			0x4000: result = Opcode4.execute(self, opcode)
+			0x5000: result = Opcode5.execute(self, opcode)
+			0x6000: result = Opcode6.execute(self, opcode)
+			0x7000: result = Opcode7.execute(self, opcode)
+			0x8000: result = Opcode8.execute(self, opcode)
+			0x9000: result = Opcode9.execute(self, opcode)
+			0xA000: result = OpcodeA.execute(self, opcode)
+			0xB000: result = OpcodeB.execute(self, opcode)
+			0xC000: result = OpcodeC.execute(self, opcode)
+			0xD000: result = OpcodeD.execute(self, opcode)
+			0xE000: result = OpcodeE.execute(self, opcode)
+			0xF000: result = OpcodeF.execute(self, opcode)
+			_: result.valid = false
 
 	if not result.get("valid", true): printerr("OPCODE INVALID: 0x%04X" % opcode)
 	if result.get("increment", true): counter += 2 # 2 byte opcode size
@@ -118,3 +127,10 @@ func execute() -> void:
 func state_update() -> void:
 	delay = maxi(0 , delay - 1)
 	sound = maxi(0 , sound - 1)
+	flags.is_halting = false
+
+
+func set_hires(enable: bool = false) -> void:
+	flags.is_hires = enable
+	video.width = 128 if flags.is_hires else 64
+	video.height = 64 if flags.is_hires else 32

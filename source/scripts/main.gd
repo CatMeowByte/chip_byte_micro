@@ -11,10 +11,10 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	for i in range(256):
+	for i in range(128):
 		Core.execute()
 	Core.state_update()
-	Display.flip(Core.buffer)
+	Display.flip(Core.buffer, Core.flags.is_hires)
 	Audio.tone_emit(float(Core.sound > 0) * 0.5, 523.25)
 	BeeperSprite.frame = int(Core.sound > 0)
 

@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-uniform int texture_width = 64;
-uniform int texture_height = 32;
+uniform int texture_width = 128;
+uniform int texture_height = 64;
 uniform float circle_radius : hint_range(0.0, 2.0, 0.0625) = 0.5;
 uniform float circle_shape : hint_range(0.0, 1.0, 0.0625) = 0.5;
 

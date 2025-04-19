@@ -18,11 +18,16 @@ static func execute(core: CBMCore, opcode: int) -> Dictionary[String, bool]:
 		0x0A:
 			is_increment = false
 
-			for key in range(16):
-				if Input.is_action_just_released("%X" % key):
-					core.register[x] = key
-					is_increment = true
-					break
+			if core.flags.is_awaiting_key and not core.flags.is_halting:
+				core.flags.is_awaiting_key = false
+				for key in range(16):
+					if Input.is_action_just_released("%X" % key):
+						core.register[x] = key
+						is_increment = true
+						break
+			else:
+				core.flags.is_halting = true
+				core.flags.is_awaiting_key = true
 
 		# Set delay
 		0x15:
