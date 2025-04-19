@@ -15,6 +15,8 @@ texture_margin_bottom = 8.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7iyis"]
 shader = ExtResource("2_rp4ql")
+shader_parameter/texture_width = 128
+shader_parameter/texture_height = 64
 shader_parameter/circle_radius = 0.75
 shader_parameter/circle_shape = 0.0
 shader_parameter/color_on = Color(0.992172, 0.796277, 0.45481, 1)

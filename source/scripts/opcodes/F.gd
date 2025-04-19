@@ -46,6 +46,9 @@ static func execute(core: CBMCore, opcode: int) -> Dictionary[String, bool]:
 		0x29:
 			core.pointer = 0x50 + (core.register[x] * 5)
 
+		0x30:
+			core.pointer = 0xA0 + (core.register[x] * 10)
+
 		# Convert to decimal
 		0x33:
 			core.memory[core.pointer] = int(core.register[x] / 100)
@@ -65,6 +68,16 @@ static func execute(core: CBMCore, opcode: int) -> Dictionary[String, bool]:
 				core.register[i] = core.memory[core.pointer + i]
 			if false: # Legacy
 				core.pointer += x + 1
+
+		# Store Register to Storage
+		0x75:
+			for i in range(x + 1):
+				core.storage[i] = core.register[i]
+
+		# Load Storage to Register
+		0x85:
+			for i in range(x + 1):
+				core.register[i] = core.storage[i]
 
 		_: is_opcode = false
 
